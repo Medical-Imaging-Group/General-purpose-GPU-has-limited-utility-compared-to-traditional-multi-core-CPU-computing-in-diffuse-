@@ -34,4 +34,4 @@ This Matlab code is used as part of the work presented in:
 
 J. Prakash, V. Desai, S. Srinivasan, and P. K. Yalavarthy, "Multi-core computers have high scalability than graphics processing units for diffuse optical tomographic image reconstruction," SPIE/OSA European Conference on Biomedical Optics (ECBO-2013), May 12-16, 2013, Munich, Germany
 
-Created on: October 13, 2013.
+**Created on**: October 13, 2013.
