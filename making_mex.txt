@@ -1,0 +1,19 @@
+
+﻿For creating MEX files
+
+1.CULA by default is written in C. One can refer to the examples directory   present in CULA home( where CULA is installed) to get an idea of how CULA is written in C. So if one wants to convert it to Matlab Executable, he/she has to first convert it to Matlab C program using MEX gateways. This can be done by referring to the link -- http://forums.nvidia.com/index.php?showtopic=70731 ( this tutorial helps in understanding how to write a CUDA C code as a Matlab C code) or any other documents that helps one understand the procedure of converting any C file to Matlab C file.
+
+2.The problem that one may face while converting CULA C file to Matlab C file is understanding the usage of LAPACK routines. This is because CULA routines are similar to LAPACK routines. One can refer to the link -- http://www.netlib.org/lapack/ ( here we can get reference to all the LAPACK routines with proper explanation of all the function parameters and outputs).
+
+3.Now after converting the CULA C(say gesv.c) code to Matlab C code(say culasv.c), we need to convert it to Matlab Executable ( MEX ) file(say culasv.mexa64). There are many ways of doing this. The pseudocode written in Matlab which is used for the conversion of culasv.c to culasv.mexa64 is shown below:
+	
+	cula_path = getenv('CULA_INC_PATH');
+	cula_lib_path = getenv('CULA_LIB_PATH_64');
+	mex(['-I' cula_path],['-L' cula_lib_path],'-lcula','culasv.c')
+	
+	Here CULA_INC_PATH and CULA_LIB_PATH_64 is the environment 	variable that will be set at the time of installation of CULA. Getenv method 	is used for getting the environment variables. cula_path and 	cula_lib_path 	are the matlab variables containing the path to the include and lib64 	directories of CULA. The function mex(..) does the conversion by linking to 	the header files and libraries of CULA (-I for header files and -L for 	libraries) and create the culasv.mexa64. In the extension culasv.mexa64, 	'a' indicates that the OS is Linux make and 64 indicates that its a 64-bit 	OS.
+
+
+
+
+
